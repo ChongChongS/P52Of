@@ -4,8 +4,7 @@
 void ofApp2::setup(){
 	ofSetWindowShape(640,360);
 	ofSetBackgroundColor(0);
-	img.loadImage("texture.png");
-	ps = new imgParticleSystem(0,ofVec2f(ofGetWindowWidth()/2,ofGetWindowHeight() - 75),img);
+	ps = new imgParticleSystem(0,ofVec2f(ofGetWindowWidth()/2,ofGetWindowHeight() - 75),20);
 	ofSetFrameRate(30);
 	ofSetBackgroundColor(0);
 }
@@ -18,6 +17,11 @@ void ofApp2::update(){
 	ps->update();
 	for(int i = 0; i < 2; i++)
 		ps->addParticle();
+	/*for(vector<imgParticle*>::iterator iter=ps->particles.begin();iter!=ps->particles.end();iter++)
+	{
+		if(*iter == NULL)
+			ps->particles.erase(iter);
+	}*/
 }
 
 //--------------------------------------------------------------

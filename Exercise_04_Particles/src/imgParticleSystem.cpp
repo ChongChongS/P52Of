@@ -1,12 +1,12 @@
 #include "imgParticleSystem.h"
 
-imgParticleSystem::imgParticleSystem(int num,ofVec2f v,ofImage m_img)
+imgParticleSystem::imgParticleSystem(int num,ofVec2f v,float mr)
 {
 	origin = v;
-	img =m_img;
+	r = mr;
 	for(int i = 0; i < num; i++)
 	{
-		particles.push_back(new imgParticle(origin,img));
+		particles.push_back(new imgParticle(origin,r));
 	}
 }
 
@@ -16,8 +16,17 @@ void imgParticleSystem::update()
 	{
 		(*iter)->update();
 		if((*iter)->isDead())
-			particles.erase(iter);
+		{
+			particles.erase(iter--);
+		}
 	}
+	//for(auto& p:particles)
+	//{
+	//	if(p != NULL)
+	//		p->update();
+	//	if(p->isDead())
+	//		p = NULL;
+	//}
 }
 
 void imgParticleSystem::display()
@@ -26,6 +35,11 @@ void imgParticleSystem::display()
 	{
 		(*iter)->display();
 	}
+	//for(auto& p:particles)
+	//{
+	//	if(p != NULL)
+	//		p->display();
+	//}
 }
 
 void imgParticleSystem::applyForce(ofVec2f dir)
@@ -36,7 +50,7 @@ void imgParticleSystem::applyForce(ofVec2f dir)
 
 void imgParticleSystem::addParticle()
 {
-	particles.push_back(new imgParticle(origin,img));
+	particles.push_back(new imgParticle(origin,r));
 }
 
 void imgParticleSystem::addParticle(imgParticle* p)

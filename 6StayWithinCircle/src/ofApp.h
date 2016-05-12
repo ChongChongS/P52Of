@@ -1,8 +1,9 @@
 #pragma once
 
-#include "imgParticleSystem.h"
-//NOC_4_08_ParticleSystemSmoke_b
-class ofApp2 : public ofBaseApp{
+#include "ofMain.h"
+#include "Vehicle.h"
+
+class ofApp : public ofBaseApp{
 
 	public:
 		void setup();
@@ -19,5 +20,5 @@ class ofApp2 : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		imgParticleSystem* ps;
+		Vehicle* v;
 };
