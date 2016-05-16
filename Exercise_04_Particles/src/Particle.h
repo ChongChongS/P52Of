@@ -5,7 +5,7 @@
 
 class Particle{
 public:
-	Particle(ofVec2f l,float mr);
+	Particle(ofVec2f l);
 	Particle(float x,float y,float mr);
 	//void run();
 	virtual void update();

@@ -20,4 +20,5 @@ class ofApp2 : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 		imgParticleSystem* ps;
+		ofImage img;
 };

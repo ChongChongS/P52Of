@@ -1,7 +1,7 @@
 #include "imgParticle.h"
 
-imgParticle::imgParticle(ofVec2f l,float r):
-	Particle(l,r)
+imgParticle::imgParticle(ofVec2f l,ofImage m_img):
+	Particle(l)
 {
 	acceleration = ofVec2f(0,0);
 	float vx = ofNoise(r) * 0.3f;
@@ -9,14 +9,14 @@ imgParticle::imgParticle(ofVec2f l,float r):
 	velocity = ofVec2f(vx,vy);
 	location = l;
 	lifespan = 100.0;
+	img = m_img;
 }
 
 void imgParticle::update()
 {
 	velocity += acceleration;
 	location += velocity;
-	if(lifespan > 0.0)
-		lifespan -= 2.0;
+	lifespan -= 2.5;
 	acceleration *= 0;
 }
 
@@ -24,7 +24,7 @@ void imgParticle::display()
 {
 	ofSetColor(ofColor(255,255,255,lifespan));
 	ofFill();
-	ofCircle(location,r);
+	ofEllipse(location,img.width,img.height);
 }
 
 void imgParticle::applyForce(ofVec2f f)

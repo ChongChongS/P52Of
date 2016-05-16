@@ -4,16 +4,15 @@
 class imgParticleSystem:public ParticleSystem
 {
 public:
-	imgParticleSystem(int num,ofVec2f v,float mr);
+	imgParticleSystem(int num,ofVec2f v,ofImage m_img);
 	void update();
 	void display();
 	void applyForce(ofVec2f dir);
 	void addParticle();
 	void addParticle(imgParticle* p);
 	bool dead();
-
-	vector<imgParticle*> particles;
 private:
+	vector<imgParticle*> particles;
 	ofVec2f origin;
-	float r;
+	ofImage img;
 };

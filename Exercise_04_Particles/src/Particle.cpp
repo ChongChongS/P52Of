@@ -10,18 +10,16 @@ Particle::Particle(float x,float y,float mr)
 	r = mr;
 }
 
-Particle::Particle(ofVec2f l,float mr)
+Particle::Particle(ofVec2f l)
 {
 	location = l;
-	r = mr;
 }
 
 void Particle::update()
 {
 	velocity += acceleration;
 	location += velocity;
-	if(lifespan > 0.0)
-		lifespan -= 2.0;
+	lifespan -= 2.0;
 }
 
 void Particle::display()
@@ -34,7 +32,7 @@ void Particle::display()
 
 bool Particle::isDead()
 {
-	if(lifespan <= 0.0)
+	if(lifespan < 0.0)
 		return true;
 	else
 		return false;
